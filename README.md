@@ -1,25 +1,36 @@
-# Opsentra AI
+# OPSENTRA AI
+**Enterprise IT Intelligence & Automation**  
+Powered by PGU Systems
 
-**Powered by PGU Systems**
+An enterprise intelligence and workflow coordination layer complementing existing ITSM, infrastructure monitoring, cybersecurity and ERP systems.
 
-Opsentra AI is a planned commercial, multi-client AI application platform.
+## Status: local development prototype
+The FastAPI backend currently supports:
+- Incident intake, priorities and fixed demonstration team routing
+- Incident resolution capture and human verification
+- Verified knowledge records and audit events
+- Summary overview endpoint
 
-## Initial engineering principles
-- Separate each client's data and configuration.
-- Require authenticated access and role-based permissions.
-- Keep API keys and credentials out of Git.
-- Collect and process customer data only with appropriate authorization.
-- Log important actions without exposing sensitive data.
-- Build a small working MVP before adding modules.
+**Not production ready:** in-memory records, no authentication, tenant isolation, database, real AI, monitoring integrations, approvals or notifications. Do not expose to the internet or load customer data.
 
-## Project status
-Repository initialized. Product requirements and first MVP workflow are being finalized. No production functionality is implemented yet.
+## Run locally
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+Windows activation: `.venv\\Scripts\\activate`.
 
-## Proposed next steps
-1. Confirm the exact first customer workflow and success criteria.
-2. Select the smallest implementation stack and data model.
-3. Implement API, authentication, and tenant isolation.
-4. Add automated tests and a demonstration environment.
+API docs: http://127.0.0.1:8000/docs
+
+## Roadmap
+1. PostgreSQL, authentication, RBAC, tenant isolation, durable audit logs
+2. Configurable routing, escalation, human approval workflows
+3. Read-only ITSM and monitoring connectors
+4. Source-grounded AI knowledge retrieval
+5. Executive dashboards, evidence-backed reporting
+6. Tests, security review and authorized customer pilot
 
 ## Security
-Never commit customer records, passwords, API keys, or production environment files. Use environment variables and managed secrets.
+Keep customer data in approved systems where possible; use explicit access grants, least privilege, approved retention, and audit trails. Never commit secrets or customer records.
